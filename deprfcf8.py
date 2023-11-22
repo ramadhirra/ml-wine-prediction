@@ -9,8 +9,13 @@ model_url = "https://www.dropbox.com/scl/fi/lbmixw8x730efwkpyou7t/Random_Forest_
 response = requests.get(model_url)
 response.raise_for_status()
 
-# Load the model from the downloaded content
-model = pickle.loads(response.content)
+# Save the downloaded content to a local file
+with open("model.pkl", "wb") as file:
+    file.write(response.content)
+
+# Load the model from the local file
+with open("model.pkl", "rb") as file:
+    model = pickle.load(file)
 
 def predict_values(flav, proline, od, color):
     # Create the input array
