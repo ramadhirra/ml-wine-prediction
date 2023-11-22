@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-model = pickle.load(open(r'C:\Users\User\Downloads\Random_Forest_Wine_Classifier.pkl', 'rb'))
+model = pickle.load(open(r'Random_Forest_Wine_Classifier.pkl', 'rb'))
 
 def predict_values(flav, proline, od, color):
     # Create the input array
