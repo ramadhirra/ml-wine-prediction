@@ -1,18 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
-
-# URL of the pickle file on GitHub
-url = 'https://raw.githubusercontent.com/ramadhirra/ml-wine-prediction/main/Random_Forest_Wine_Classifier.pkl'
-
-# Download the pickle file
-response = requests.get(url)
-with open('Random_Forest_Wine_Classifier.pkl', 'wb') as file:
-    file.write(response.content)
-
-# Load the pickle file
-model = pickle.load(open('Random_Forest_Wine_Classifier.pkl', 'rb'))
-
+model = pickle.load(open(r'C:\Users\User\Downloads\Random_Forest_Wine_Classifier.pkl', 'rb'))
 
 def predict_values(flav, proline, od, color):
     # Create the input array
