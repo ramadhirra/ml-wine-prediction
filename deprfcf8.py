@@ -1,12 +1,16 @@
 import streamlit as st
 import pickle
 import numpy as np
-import urllib.request
+import requests
 
 model_url = "https://www.dropbox.com/scl/fi/lbmixw8x730efwkpyou7t/Random_Forest_Wine_Classifier.pkl?rlkey=7s1kuexs6rlwm6vydj6tf85s7&dl=0"
 
-# Load the model from the URL
-model = pickle.load(urllib.request.urlopen(model_url))
+# Download the model file
+response = requests.get(model_url)
+response.raise_for_status()
+
+# Load the model from the downloaded content
+model = pickle.loads(response.content)
 
 def predict_values(flav, proline, od, color):
     # Create the input array
